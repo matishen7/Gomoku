@@ -5,7 +5,7 @@ namespace Gomoku.Models
     public class HumanPlayer : Player
     {
         private string Name;
-        public bool isBlack = true;
+        private bool isBlack = true;
         public HumanPlayer(string name, bool isBlack = true)
         {
             Name = name;

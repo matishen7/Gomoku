@@ -16,16 +16,17 @@ namespace GomokuGame.Models
             "Erny", "Evonne", "Charita", "Anny", "Mavra", "Fredek",
             "Silvio", "Cam", "Hulda", "Nanice", "Iolanthe", "Brucie",
             "Kara", "Paco"};
-        public bool isBlack = false;
-        public ComputerPlayer()
+        private bool isBlack = false;
+        public ComputerPlayer(bool isBlack = false)
         {
             Name = names[random.Next(0, names.Length)];
+            this.isBlack = isBlack;
         }
-        public Board Move(Board board)
+        public Board Move(Board board, int x, int y)
         {
             if (board == null) throw new ArgumentNullException(nameof(board));
-            var x = random.Next(board.GetGridSize());
-            var y = random.Next(board.GetGridSize());
+            x = random.Next(board.GetGridSize());
+            y = random.Next(board.GetGridSize());
             while (board?.Grid?[x][y].Color != StoneColor.Empty)
             {
                 x = random.Next(board.GetGridSize());
