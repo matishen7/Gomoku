@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gomoku.Models;
+using System;
+using System.Numerics;
 using static Gomoku.Models.Cell;
 
 namespace GomokuGame.Models
@@ -8,11 +10,16 @@ namespace GomokuGame.Models
         private Random random = new Random();
         private string Name;
         private string[] names = new string[] {
-            "John", "Mark", "Isabella"};
+            "John", "Mark", "Isabella","Alano", "Trever", "Delphine", "Sigismundo",
+            "Shermie", "Filide", "Daniella", "Annmarie", "Bartram",
+            "Pennie", "Rafael", "Celine", "Kacey", "Saree", "Tu",
+            "Erny", "Evonne", "Charita", "Anny", "Mavra", "Fredek",
+            "Silvio", "Cam", "Hulda", "Nanice", "Iolanthe", "Brucie",
+            "Kara", "Paco"};
         public bool isBlack = false;
         public ComputerPlayer()
         {
-            Name = names[random.Next(names.Length)];
+            Name = names[random.Next(0, names.Length)];
         }
         public Board Move(Board board)
         {
@@ -26,7 +33,7 @@ namespace GomokuGame.Models
             }
 
             if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
-            else board.Grid[x][y].Color = StoneColor.Red;
+            else board.Grid[x][y].Color = StoneColor.White;
             return board;
         }
 

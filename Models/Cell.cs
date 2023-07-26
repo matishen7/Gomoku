@@ -2,7 +2,7 @@
 {
     public class Cell
     {
-        public StoneColor Color { get; set; } = StoneColor.Red;
+        public StoneColor Color { get; set; } = StoneColor.Empty;
         public Cell()
         {
 
@@ -11,7 +11,7 @@
         public enum StoneColor
         {
             Black,
-            Red,
+            White,
             Empty
         }
     }
