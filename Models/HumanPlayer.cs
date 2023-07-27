@@ -19,6 +19,8 @@ namespace Gomoku.Models
             if (x < 0 || y < 0) throw new ArgumentException("x and y should be greater than 0");
             if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
             else board.Grid[x][y].Color = StoneColor.White;
+            
+            board.EndGame(x, y);
             return board;
         }
         public string GetName()

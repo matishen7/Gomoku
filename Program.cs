@@ -43,7 +43,9 @@ switch (option)
 var boardBuilder = new BoardBuilder();
 var board = boardBuilder.Build();
 currentPlayer = player1;
-while (true)
+Player winner = null;
+bool end = false;
+while (!end)
 {
     Console.WriteLine(string.Format("{0}'s move", currentPlayer.GetName()));
     if (currentPlayer is ComputerPlayer) { currentPlayer.Move(board); }
@@ -58,9 +60,14 @@ while (true)
         currentPlayer.Move(board, x, y);
     }
 
-    currentPlayer = swapPlayers(currentPlayer, player1, player2);
     board.Print();
+    end = board.IsEndOfGame();
+    if (!end)
+        currentPlayer = swapPlayers(currentPlayer, player1, player2);
+    else winner = currentPlayer;
 }
+
+Console.WriteLine("Winner is " + winner.GetName());
 
 static Player swapPlayers(Player currentPlayer, Player player1, Player player2)
 {

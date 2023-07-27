@@ -10,12 +10,19 @@ namespace GomokuGame.Models
         private Random random = new Random();
         private string Name;
         private string[] names = new string[] {
-            "John", "Mark", "Isabella","Alano", "Trever", "Delphine", "Sigismundo",
-            "Shermie", "Filide", "Daniella", "Annmarie", "Bartram",
-            "Pennie", "Rafael", "Celine", "Kacey", "Saree", "Tu",
-            "Erny", "Evonne", "Charita", "Anny", "Mavra", "Fredek",
-            "Silvio", "Cam", "Hulda", "Nanice", "Iolanthe", "Brucie",
-            "Kara", "Paco"};
+            "John",
+            "Mark",
+            "Isabella",
+            "Emma",
+            "Liam",
+            "Olivia",
+            "Noah",
+            "Ava",
+            "Elijah",
+            "Sophia",
+            "James",
+            "Isabella",
+            "Lucas"};
         private bool isBlack = false;
         public ComputerPlayer(bool isBlack = false)
         {
@@ -35,6 +42,8 @@ namespace GomokuGame.Models
 
             if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
             else board.Grid[x][y].Color = StoneColor.White;
+
+            board.EndGame(x, y);
             return board;
         }
 
