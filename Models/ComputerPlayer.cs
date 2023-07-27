@@ -43,7 +43,7 @@ namespace GomokuGame.Models
             if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
             else board.Grid[x][y].Color = StoneColor.White;
 
-            board.EndGame(x, y);
+            board.CheckForWin(x, y);
             return board;
         }
 

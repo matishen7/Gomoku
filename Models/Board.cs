@@ -53,7 +53,7 @@ namespace Gomoku.Models
             return end;
         }
 
-        public void EndGame(int x, int y)
+        public void CheckForWin(int x, int y)
         {
             var color = Grid[x][y].Color;
             if (isHorizontalWin(x, y, color)
