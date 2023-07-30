@@ -3,7 +3,7 @@ using System;
 using System.Numerics;
 using static Gomoku.Models.Cell;
 
-namespace GomokuGame.Models
+namespace Gomoku.Models
 {
     public class ComputerPlayer : Player
     {

@@ -15,8 +15,8 @@ namespace Gomoku.Models
         public Board Move(Board board, int x, int y)
         {
             if (board == null) throw new ArgumentNullException(nameof(board));
-            if (x >= board.GetGridSize() || y >= board.GetGridSize()) throw new ArgumentException("x and y should be less than " + board.GetGridSize());
-            if (x < 0 || y < 0) throw new ArgumentException("x and y should be greater than 0");
+            if (x >= board.GetGridSize() || y >= board.GetGridSize()) throw new ArgumentOutOfRangeException("x and y should be less than " + board.GetGridSize());
+            if (x < 0 || y < 0) throw new ArgumentOutOfRangeException("x and y should be greater than 0");
             if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
             else board.Grid[x][y].Color = StoneColor.White;
             

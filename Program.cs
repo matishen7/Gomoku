@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Gomoku.Models;
-using GomokuGame.Models;
-
 Console.WriteLine("Welcome to Gomoku game!");
 Console.WriteLine("Choose option to play:\n 1-Computer vs Human 2-Human vs Human 3-Computer vs Computer");
 var option = Console.ReadLine();

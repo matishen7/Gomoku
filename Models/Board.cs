@@ -12,6 +12,7 @@ namespace Gomoku.Models
 
         public Board()
         {
+            GridBuild();
         }
 
         public void SetGridSize(int size)
