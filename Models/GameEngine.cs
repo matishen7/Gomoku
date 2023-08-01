@@ -37,14 +37,13 @@ namespace Gomoku.Models
                 screen.Display($"{currentPlayer.GetName()}'s move");
                 currentPlayer.Move(board);
                 screen.DisplayBoard(board);
-                if (!board.IsEndOfGame())
-                    swapPlayers();
-                else winner = currentPlayer;
+                if (board.IsEndOfGame()) winner = currentPlayer;
+                MoveTurn();
             }
             screen.Display("Winner is " + winner.GetName());
         }
 
-        private void swapPlayers()
+        private void MoveTurn()
         {
             if (currentPlayer.GetName().Equals(player1.GetName()))
                 currentPlayer = player2;

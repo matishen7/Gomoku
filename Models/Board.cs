@@ -9,6 +9,7 @@ namespace Gomoku.Models
         public Cell[][]? grid { get; private set; }
         private int gridSize = 15;
         private bool end = false;
+        private static int[,] deltas = new int[,] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 } };
 
         public Board()
         {
@@ -45,10 +46,11 @@ namespace Gomoku.Models
         public void CheckForWin(int x, int y)
         {
             var color = grid[x][y].Color;
-            if (isHorizontalWin(x, y, color)
-            || isVerticalWin(x, y, color)
-            || isDiagonalDownWin(x, y, color)
-            || isDiagonalUpWin(x, y, color)) end = true;
+            for (int i = 0; i < deltas.Length; i += 2)
+            {
+                if (count(x, y, deltas[i, 0], deltas[i, 1], color) + count(x, y, deltas[i + 1, 0], deltas[i + 1, 1], color) == 4) end = true;
+            };
+
         }
 
         private bool isHorizontalWin(int row, int column, StoneColor color)
