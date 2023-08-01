@@ -37,18 +37,6 @@ namespace Gomoku.Models
             }
         }
 
-        public void Print()
-        {
-            for (int i = 0; i < GridSize; i++)
-            {
-                for (int j = 0; j < GridSize; j++)
-                    if (Grid[i][j].Color == Cell.StoneColor.Black) Console.Write("X");
-                    else if (Grid[i][j].Color == Cell.StoneColor.White) Console.Write("O");
-                    else Console.Write("-");
-                Console.WriteLine();
-            }
-        }
-
         public bool IsEndOfGame()
         {
             return end;

@@ -8,7 +8,8 @@ namespace Gomoku.Models
     public class ComputerPlayer : Player
     {
         private Random random = new Random();
-        private string Name;
+        private string name;
+        private StoneColor myColor;
         private string[] names = new string[] {
             "John",
             "Mark",
@@ -23,25 +24,23 @@ namespace Gomoku.Models
             "James",
             "Isabella",
             "Lucas"};
-        private bool isBlack = false;
-        public ComputerPlayer(bool isBlack = false)
+        public ComputerPlayer(StoneColor color)
         {
-            Name = names[random.Next(0, names.Length)];
-            this.isBlack = isBlack;
+            name = names[random.Next(0, names.Length)];
+            this.myColor = color;
         }
-        public Board Move(Board board, int x, int y)
+        public Board Move(Board board)
         {
             if (board == null) throw new ArgumentNullException(nameof(board));
-            x = random.Next(board.GetGridSize());
-            y = random.Next(board.GetGridSize());
+            var x = random.Next(board.GetGridSize());
+            var y = random.Next(board.GetGridSize());
             while (board?.Grid?[x][y].Color != StoneColor.Empty)
             {
                 x = random.Next(board.GetGridSize());
                 y = random.Next(board.GetGridSize());
             }
 
-            if (isBlack) board.Grid[x][y].Color = StoneColor.Black;
-            else board.Grid[x][y].Color = StoneColor.White;
+            board.Grid[x][y].Color = myColor;
 
             board.CheckForWin(x, y);
             return board;
@@ -49,7 +48,7 @@ namespace Gomoku.Models
 
         public string GetName()
         {
-            return Name;
+            return name;
         }
     }
 }
