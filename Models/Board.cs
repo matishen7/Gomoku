@@ -6,8 +6,8 @@ namespace Gomoku.Models
 {
     public class Board
     {
-        public Cell[][]? Grid { get; private set; }
-        private int GridSize = 15;
+        public Cell[][]? grid { get; private set; }
+        private int gridSize = 15;
         private bool end = false;
 
         public Board()
@@ -17,23 +17,23 @@ namespace Gomoku.Models
 
         public void SetGridSize(int size)
         {
-            GridSize = size;
+            gridSize = size;
             GridBuild();
         }
 
         public int GetGridSize()
         {
-            return GridSize;
+            return gridSize;
         }
 
         private void GridBuild()
         {
-            Grid = new Cell[GridSize][];
-            for (int i = 0; i < GridSize; i++)
+            grid = new Cell[gridSize][];
+            for (int i = 0; i < gridSize; i++)
             {
-                Grid[i] = new Cell[GridSize];
-                for (int j = 0; j < GridSize; j++)
-                    Grid[i][j] = new Cell();
+                grid[i] = new Cell[gridSize];
+                for (int j = 0; j < gridSize; j++)
+                    grid[i][j] = new Cell();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Gomoku.Models
 
         public void CheckForWin(int x, int y)
         {
-            var color = Grid[x][y].Color;
+            var color = grid[x][y].Color;
             if (isHorizontalWin(x, y, color)
             || isVerticalWin(x, y, color)
             || isDiagonalDownWin(x, y, color)
@@ -82,7 +82,7 @@ namespace Gomoku.Models
             int r = row + deltaRow;
             int c = col + deltaCol;
 
-            while (r >= 0 && r < GridSize && c >= 0 && c < GridSize && Grid[r][c].Color == color)
+            while (r >= 0 && r < gridSize && c >= 0 && c < gridSize && grid[r][c].Color == color)
             {
                 result++;
                 r += deltaRow;

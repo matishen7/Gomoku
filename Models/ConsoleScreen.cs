@@ -22,9 +22,9 @@ namespace Gomoku.Models
         {
             for (int i = 0; i < board.GetGridSize(); i++)
             {
-                for (int j = 0; j < board.Grid[i].Length; j++)
-                    if (board.Grid[i][j].Color == Cell.StoneColor.Black) Console.Write("X");
-                    else if (board.Grid[i][j].Color == Cell.StoneColor.White) Console.Write("O");
+                for (int j = 0; j < board.grid[i].Length; j++)
+                    if (board.grid[i][j].Color == Cell.StoneColor.Black) Console.Write("X");
+                    else if (board.grid[i][j].Color == Cell.StoneColor.White) Console.Write("O");
                     else Console.Write("-");
                 Console.WriteLine();
             }

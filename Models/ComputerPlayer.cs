@@ -34,13 +34,13 @@ namespace Gomoku.Models
             if (board == null) throw new ArgumentNullException(nameof(board));
             var x = random.Next(board.GetGridSize());
             var y = random.Next(board.GetGridSize());
-            while (board?.Grid?[x][y].Color != StoneColor.Empty)
+            while (board?.grid?[x][y].Color != StoneColor.Empty)
             {
                 x = random.Next(board.GetGridSize());
                 y = random.Next(board.GetGridSize());
             }
 
-            board.Grid[x][y].Color = myColor;
+            board.grid[x][y].Color = myColor;
 
             board.CheckForWin(x, y);
             return board;
