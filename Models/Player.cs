@@ -5,7 +5,8 @@ namespace Gomoku.Models
     public interface Player
     {
         public string GetName();
-        public Board Move(Board board);
+        public (int x, int y) MakeMove(Board board);
+        public StoneColor GetColor();
     }
 
     public interface IPlayerFactory

@@ -35,7 +35,9 @@ namespace Gomoku.Models
             while (!board.IsEndOfGame())
             {
                 screen.Display($"{currentPlayer.GetName()}'s move");
-                currentPlayer.Move(board);
+                var move = currentPlayer.MakeMove(board);
+                board.grid[move.x][move.y].Color = currentPlayer.GetColor();
+                board.CheckForWin(move.x, move.y);
                 screen.DisplayBoard(board);
                 if (board.IsEndOfGame()) winner = currentPlayer;
                 MoveTurn();

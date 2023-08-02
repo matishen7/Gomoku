@@ -14,7 +14,7 @@ namespace Gomoku.Models
             myColor = color;
         }
 
-        public Board Move(Board board)
+        public (int x, int y) MakeMove(Board board)
         {
             if (board == null) throw new ArgumentNullException(nameof(board));
 
@@ -26,14 +26,17 @@ namespace Gomoku.Models
 
             if (x >= board.GetGridSize() || y >= board.GetGridSize()) throw new ArgumentOutOfRangeException("x and y should be less than " + board.GetGridSize());
             if (x < 0 || y < 0) throw new ArgumentOutOfRangeException("x and y should be greater than 0");
-            board.grid[x][y].Color = myColor;
             
-            board.CheckForWin(x, y);
-            return board;
+            return (x, y);
         }
         public string GetName()
         {
             return name;
+        }
+
+        public StoneColor GetColor()
+        {
+            return myColor;
         }
     }
 }

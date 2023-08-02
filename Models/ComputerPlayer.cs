@@ -29,7 +29,7 @@ namespace Gomoku.Models
             name = names[random.Next(0, names.Length)];
             this.myColor = color;
         }
-        public Board Move(Board board)
+        public (int x, int y) MakeMove(Board board)
         {
             if (board == null) throw new ArgumentNullException(nameof(board));
             var x = random.Next(board.GetGridSize());
@@ -39,16 +39,17 @@ namespace Gomoku.Models
                 x = random.Next(board.GetGridSize());
                 y = random.Next(board.GetGridSize());
             }
-
-            board.grid[x][y].Color = myColor;
-
-            board.CheckForWin(x, y);
-            return board;
+            return (x,y);
         }
 
         public string GetName()
         {
             return name;
+        }
+
+        public StoneColor GetColor()
+        {
+            return myColor;
         }
     }
 }
