@@ -8,9 +8,4 @@ namespace Gomoku.Models
         public (int x, int y) MakeMove(Board board);
         public StoneColor GetColor();
     }
-
-    public interface IPlayerFactory
-    {
-        public Player CreatePlayer(StoneColor stoneColor, IScreen screen);
-    }
 }

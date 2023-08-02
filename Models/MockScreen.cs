@@ -25,7 +25,7 @@ namespace Gomoku.Models
                 return inputQueue.Dequeue();
             }
 
-            return null; // or throw an exception for unexpected ReadLine calls
+            return null;
         }
 
         public void Display(string message)
