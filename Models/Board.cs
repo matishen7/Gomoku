@@ -46,52 +46,39 @@ namespace Gomoku.Models
         public void CheckForWin(int x, int y)
         {
             var color = grid[x][y].Color;
-            for (int i = 0; i < deltas.Length; i += 2)
+
+            for (int i = 0; i < deltas.GetLength(0); i++)
             {
-                if (count(x, y, deltas[i, 0], deltas[i, 1], color) + count(x, y, deltas[i + 1, 0], deltas[i + 1, 1], color) == 4) end = true;
-            };
+                int dx = deltas[i, 0];
+                int dy = deltas[i, 1];
 
-        }
+                int count = 1; // Count the current stone
+                int r = x + dx;
+                int c = y + dy;
 
-        private bool isHorizontalWin(int row, int column, StoneColor color)
-        {
-            return count(row, column, 1, 0, color)
-                    + count(row, column, -1, 0, color) == 4;
-        }
+                while (r >= 0 && r < gridSize && c >= 0 && c < gridSize && grid[r][c].Color == color)
+                {
+                    count++;
+                    r += dx;
+                    c += dy;
+                }
 
-        private bool isVerticalWin(int row, int column, StoneColor color)
-        {
-            return count(row, column, 0, 1, color)
-                    + count(row, column, 0, -1, color) == 4;
-        }
+                r = x - dx; // Move back to the original position
+                c = y - dy;
 
-        private bool isDiagonalDownWin(int row, int column, StoneColor color)
-        {
-            return count(row, column, 1, 1, color)
-                    + count(row, column, -1, -1, color) == 4;
-        }
+                while (r >= 0 && r < gridSize && c >= 0 && c < gridSize && grid[r][c].Color == color)
+                {
+                    count++;
+                    r -= dx;
+                    c -= dy;
+                }
 
-        private bool isDiagonalUpWin(int row, int column, StoneColor color)
-        {
-            return count(row, column, -1, 1, color)
-                    + count(row, column, 1, -1, color) == 4;
-        }
-
-        private int count(int row, int col, int deltaRow, int deltaCol, StoneColor color)
-        {
-
-            int result = 0;
-            int r = row + deltaRow;
-            int c = col + deltaCol;
-
-            while (r >= 0 && r < gridSize && c >= 0 && c < gridSize && grid[r][c].Color == color)
-            {
-                result++;
-                r += deltaRow;
-                c += deltaCol;
+                if (count >= 5)
+                {
+                    end = true;
+                    break; // No need to check other directions if a win is found
+                }
             }
-
-            return result;
         }
     }
 }
